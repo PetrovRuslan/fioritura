@@ -132,7 +132,7 @@
 
         .services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 2rem;
             align-items: stretch;
@@ -260,6 +260,80 @@
             margin: 0.5rem 0;
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #667eea;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
@@ -316,7 +390,19 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .modal-content iframe {
+                height: 400px !important;
+            }
+        }
     </style>
+    <script src="https://forms.yandex.ru/_static/embed.js"></script>
 </head>
 <body>
     <!-- Заголовок -->
@@ -340,7 +426,7 @@
     <section class="hero">
         <div class="container">
             <p>Развивайте вокальные навыки под руководством опытного преподавателя</p>
-            <button class="cta-button" onclick="scrollToContact()">Записаться на занятие</button>
+            <button class="cta-button" onclick="openFormModal()">Записаться на занятие</button>
         </div>
     </section>
 
@@ -368,16 +454,6 @@
                     <div class="icon">🏆</div>
                     <h3>Подготовка к конкурсам</h3>
                     <p>Интенсивная подготовка к вокальным конкурсам и фестивалям</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon">🎹</div>
-                    <h3>Работа с аккомпанементом</h3>
-                    <p>Развитие навыков пения под аккомпанемент и сценического мастерства</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon">⭐</div>
-                    <h3>Мастер-классы</h3>
-                    <p>Периодические мастер-классы от приглашённых профессионалов музыки</p>
                 </div>
             </div>
         </div>
@@ -425,22 +501,22 @@
         <div class="container">
             <h2>Свяжитесь с нами</h2>
             <div class="contact-info">
-                <div class="contact-item">
+                <!-- <div class="contact-item">
                     <h3>📞 Телефон</h3>
                     <p><a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
-                </div>
+                </div> -->
                 <div class="contact-item">
                     <h3>📧 Email</h3>
-                    <p><a href="mailto:info@fiorita.ru">info@fiorita.ru</a></p>
+                    <p><a href="mailto:hurka.sench@mail.ru">hurka.sench@mail.ru</a></p>
                 </div>
                 <div class="contact-item">
                     <h3>📍 Адрес</h3>
-                    <p>ул. Музыкальная, дом 1<br>Москва, Россия</p>
+                    <p>ул. Печатная, 26A (2ой этаж, кабинет №11)<br>Калининград, Россия</p>
                 </div>
-                <div class="contact-item">
+                <!-- <div class="contact-item">
                     <h3>⏰ Часы работы</h3>
                     <p>Пн-Пт: 10:00 - 20:00<br>Сб: 10:00 - 18:00<br>Вс: выходной</p>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -451,7 +527,26 @@
         <p>Все права защищены.</p>
     </footer>
 
+    <!-- Модальное окно с формой -->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeFormModal()">&times;</button>
+            <h3 style="color: #667eea; margin-bottom: 1.5rem; text-align: center;">Запись на занятие</h3>
+            <iframe src="https://forms.yandex.ru/u/69ce9db96d2d736fe64b5648?iframe=1" frameborder="0" name="ya-form-69ce9db96d2d736fe64b5648" width="100%" height="600" style="border: none;"></iframe>
+        </div>
+    </div>
+
     <script>
+        function openFormModal() {
+            document.getElementById('formModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFormModal() {
+            document.getElementById('formModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
         function scrollToContact() {
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
         }
@@ -464,6 +559,14 @@
         function closeMenu() {
             const navMenu = document.getElementById('navMenu');
             navMenu.classList.remove('active');
+        }
+
+        // Закрыть модальное окно при клике вне его
+        window.onclick = function(event) {
+            const modal = document.getElementById('formModal');
+            if (event.target === modal) {
+                closeFormModal();
+            }
         }
 
         // Закрыть меню при клике вне его
