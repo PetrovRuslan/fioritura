@@ -77,10 +77,6 @@
             align-items: center;
         }
 
-        .nav-menu.active {
-            display: flex;
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -334,6 +330,34 @@
             }
         }
 
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
@@ -400,6 +424,15 @@
             .modal-content iframe {
                 height: 400px !important;
             }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .gallery-item img {
+                height: 150px;
+            }
         }
     </style>
     <script src="https://forms.yandex.ru/_static/embed.js"></script>
@@ -414,7 +447,7 @@
     <!-- Навигация -->
     <nav>
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-        <div class="nav-menu active" id="navMenu">
+        <div class="nav-menu" id="navMenu">
             <a href="#services" onclick="closeMenu()">Услуги</a>
             <a href="#about" onclick="closeMenu()">О студии</a>
             <a href="#teacher" onclick="closeMenu()">Педагог</a>
@@ -482,8 +515,25 @@
         <div class="container">
             <h2>О педагоге</h2>
             <div class="about-content">
-                <div class="about-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                    👩‍🏫
+                <div class="gallery">
+                    <div class="gallery-item" onclick="openPhotoModal('photo_2026-04-02_19-07-19.jpg')">
+                        <img src="photo_2026-04-02_19-07-19.jpg" alt="Фото от педагога">
+                    </div>
+                    <div class="gallery-item" onclick="openPhotoModal('photo_2026-04-02_19-07-20.jpg')">
+                        <img src="photo_2026-04-02_19-07-20.jpg" alt="Фото от педагога">
+                    </div>
+                    <div class="gallery-item" onclick="openPhotoModal('photo_2026-04-02_19-07-24.jpg')">
+                        <img src="photo_2026-04-02_19-07-24.jpg" alt="Фото от педагога">
+                    </div>
+                    <div class="gallery-item" onclick="openPhotoModal('photo_2026-04-02_19-18-52.jpg')">
+                        <img src="photo_2026-04-02_19-18-52.jpg" alt="Фото от педагога">
+                    </div>
+                    <div class="gallery-item" onclick="openPhotoModal('photo_2026-04-02_19-18-53.jpg')">
+                        <img src="photo_2026-04-02_19-18-53.jpg" alt="Фото от педагога">
+                    </div>
+                    <div class="gallery-item" onclick="openPhotoModal('photo_2026-04-02_19-18-56.jpg')">
+                        <img src="photo_2026-04-02_19-18-56.jpg" alt="Фото от педагога">
+                    </div>
                 </div>
                 <div class="about-text">
                     <h3>Александра Гурко</h3>
@@ -501,10 +551,6 @@
         <div class="container">
             <h2>Свяжитесь с нами</h2>
             <div class="contact-info">
-                <!-- <div class="contact-item">
-                    <h3>📞 Телефон</h3>
-                    <p><a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
-                </div> -->
                 <div class="contact-item">
                     <h3>📧 Email</h3>
                     <p><a href="mailto:hurka.sench@mail.ru">hurka.sench@mail.ru</a></p>
@@ -513,10 +559,6 @@
                     <h3>📍 Адрес</h3>
                     <p>ул. Печатная, 26A (2ой этаж, кабинет №11)<br>Калининград, Россия</p>
                 </div>
-                <!-- <div class="contact-item">
-                    <h3>⏰ Часы работы</h3>
-                    <p>Пн-Пт: 10:00 - 20:00<br>Сб: 10:00 - 18:00<br>Вс: выходной</p>
-                </div> -->
             </div>
         </div>
     </section>
@@ -536,6 +578,14 @@
         </div>
     </div>
 
+    <!-- Модальное окно для просмотра фотографий -->
+    <div id="photoModal" class="modal">
+        <div class="modal-content" style="padding: 0; max-width: 800px;">
+            <button class="modal-close" onclick="closePhotoModal()">&times;</button>
+            <img id="modalPhoto" src="" alt="Фото" style="width: 100%; height: auto; border-radius: 15px;">
+        </div>
+    </div>
+
     <script>
         function openFormModal() {
             document.getElementById('formModal').classList.add('active');
@@ -544,6 +594,17 @@
 
         function closeFormModal() {
             document.getElementById('formModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openPhotoModal(photoSrc) {
+            document.getElementById('modalPhoto').src = photoSrc;
+            document.getElementById('photoModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePhotoModal() {
+            document.getElementById('photoModal').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
@@ -561,11 +622,15 @@
             navMenu.classList.remove('active');
         }
 
-        // Закрыть модальное окно при клике вне его
+        // Закрыть модальные окна при клике вне их
         window.onclick = function(event) {
-            const modal = document.getElementById('formModal');
-            if (event.target === modal) {
+            const formModal = document.getElementById('formModal');
+            const photoModal = document.getElementById('photoModal');
+            if (event.target === formModal) {
                 closeFormModal();
+            }
+            if (event.target === photoModal) {
+                closePhotoModal();
             }
         }
 
