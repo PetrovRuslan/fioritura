@@ -459,7 +459,7 @@
     <section class="hero">
         <div class="container">
             <p>Развивайте вокальные навыки под руководством опытного преподавателя</p>
-            <button class="cta-button" onclick="openFormModal()">Записаться на занятие</button>
+            <button class="cta-button" onclick="window.open('https://forms.yandex.ru/u/69ce9db96d2d736fe64b5648', '_blank')">Записаться на занятие</button>
         </div>
     </section>
 
@@ -569,15 +569,6 @@
         <p>&copy; 2026 Фиоритура. Вокальная студия.</p>
     </footer>
 
-    <!-- Модальное окно с формой -->
-    <div id="formModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeFormModal()">&times;</button>
-            <h3 style="color: #667eea; margin-bottom: 1.5rem; text-align: center;">Запись на занятие</h3>
-            <iframe src="https://forms.yandex.ru/u/69ce9db96d2d736fe64b5648?iframe=1" frameborder="0" name="ya-form-69ce9db96d2d736fe64b5648" width="100%" height="600" style="border: none;" allow="geolocation; camera; microphone; useragent"></iframe>
-        </div>
-    </div>
-
     <!-- Модальное окно для просмотра фотографий -->
     <div id="photoModal" class="modal">
         <div class="modal-content" style="padding: 0; max-width: 800px;">
@@ -587,16 +578,6 @@
     </div>
 
     <script>
-        function openFormModal() {
-            document.getElementById('formModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeFormModal() {
-            document.getElementById('formModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
         function openPhotoModal(photoSrc) {
             document.getElementById('modalPhoto').src = photoSrc;
             document.getElementById('photoModal').classList.add('active');
@@ -624,11 +605,7 @@
 
         // Закрыть модальные окна при клике вне их
         window.onclick = function(event) {
-            const formModal = document.getElementById('formModal');
             const photoModal = document.getElementById('photoModal');
-            if (event.target === formModal) {
-                closeFormModal();
-            }
             if (event.target === photoModal) {
                 closePhotoModal();
             }
