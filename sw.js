@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fioratura-v1';
+const CACHE_NAME = 'fioritura-v1';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',

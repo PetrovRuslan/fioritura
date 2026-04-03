@@ -4,7 +4,7 @@ Allow: /
 Disallow: /sw.js
 
 # Указываем расположение sitemap
-Sitemap: https://fioratura.ru/sitemap.xml
+Sitemap: https://fioritura.ru/sitemap.xml
 
 # Yandex
 User-agent: Yandex
