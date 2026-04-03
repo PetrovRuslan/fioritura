@@ -2,35 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
-        <loc>https://fioratura.ru/</loc>
+        <loc>https://fioritura.ru/</loc>
         <lastmod>2026-04-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://fioratura.ru/IMG_1310.JPG</image:loc>
+            <image:loc>https://fioritura.ru/IMG_1310.JPG</image:loc>
             <image:title>Александра Гурко - педагог вокальной студии</image:title>
         </image:image>
     </url>
     <url>
-        <loc>https://fioratura.ru/#services</loc>
+        <loc>https://fioritura.ru/#services</loc>
         <lastmod>2026-04-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://fioratura.ru/#about</loc>
+        <loc>https://fioritura.ru/#about</loc>
         <lastmod>2026-04-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://fioratura.ru/#teacher</loc>
+        <loc>https://fioritura.ru/#teacher</loc>
         <lastmod>2026-04-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://fioratura.ru/#contact</loc>
+        <loc>https://fioritura.ru/#contact</loc>
         <lastmod>2026-04-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
