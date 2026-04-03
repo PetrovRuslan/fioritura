@@ -1,0 +1,19 @@
+# Robots.txt для Фиоритура
+User-agent: *
+Allow: /
+Disallow: /sw.js
+
+# Указываем расположение sitemap
+Sitemap: https://fioratura.ru/sitemap.xml
+
+# Yandex
+User-agent: Yandex
+Allow: /
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
