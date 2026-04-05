@@ -90,6 +90,93 @@
         ]
     }
     </script>
+    <!-- Стили для FAQ аккордеона -->
+    <style>
+        .faq-list {
+            margin-top: 1rem;
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .faq-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #f0f0f0;
+            color: #667eea;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            color: #667eea;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            transition: max-height 0.3s ease-in;
+        }
+
+        .faq-answer p {
+            padding: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .faq-question {
+                font-size: 0.95rem;
+                padding: 0.8rem;
+            }
+
+            .faq-answer p {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+
+    <!-- Фиксированный отступ для якорей, чтобы они не перекрывались меню -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #services, #about, #teacher, #faq, #contact {
+            scroll-margin-top: 80px;
+        }
+    </style>
 </head>
 <body>
     <!-- Заголовок -->
@@ -105,6 +192,7 @@
             <a href="#services" onclick="closeMenu()">Услуги</a>
             <a href="#about" onclick="closeMenu()">О студии</a>
             <a href="#teacher" onclick="closeMenu()">Педагог</a>
+            <a href="#faq" onclick="closeMenu()">Частые вопросы</a>
             <a href="#contact" onclick="closeMenu()">Контакты</a>
         </div>
     </nav>
@@ -196,6 +284,104 @@
                         <img src="IMG_1310.JPG" alt="Александра Гурко" style="width: 100%; height: auto; display: block; border-radius: 10px;" loading="lazy" decoding="async">
                     </div>
                     <h3 style="color: #667eea; margin-bottom: 0.3rem;">Александра Гурко</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Частые вопросы -->
+    <section id="faq">
+        <div class="container">
+            <h2>Частые вопросы</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Каков уровень подготовки требуется для начала занятий?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Никакого! Мы работаем с любым уровнем подготовки. Каждый получает индивидуальный план обучения, адаптированный к его целям и способностям.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Мне кажется у меня нет ни слуха ни голоса? Есть ли у меня шанс начать петь?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Никакого! Это конечно шутка, все люди имеют голос и слух. Главное — желание и стремление к развитию.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Как долго длится одно занятие?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Индивидуальные занятия обычно длятся 45 минут, групповые занятия — 90 минут. Возможны гибкие варианты по договоренности.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Как часто нужно заниматься?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Рекомендуем минимум 1 раз в неделю для стабильного прогресса. Для более быстрого развития вокальных навыков от 2х раз в неделю.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Есть ли пробное занятие и как оно проходит?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Да, есть! Первое занятие — это ознакомительный урок, на котором мы обсуждаем ваши цели, тестируем голос и подбираем оптимальную программу обучения.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Насколько быстро будут видны результаты?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Первые результаты ощущаются уже после 2-3 занятий. Заметные улучшения в технике пения видны через месяц регулярных занятий.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Какие методы обучения используются?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Мы используем комбинацию классических методов и инновационных техник. Упор делается на постановку голоса, развитие певческого дыхание, техники звукоизвлечения и артистизм.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Есть ли возрастные ограничения?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Мы занимаемся с детьми от 7 лет и взрослыми любого возраста. Обязательное условие — интерес к пению и желание развиваться.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Где вы находитесь? И как с вами связаться?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Мы находимся в Калининграде, по адресу: ул. Печатная, 26A (2ой этаж, кабинет №11). Внизу сайта указана ссылка на яндекс карты где вы можете построить маршрут. Связаться с нами можно через форму на странице или написать на почту <a href="mailto:hurka.sench@mail.ru">hurka.sench@mail.ru</a>. Обязательно укажите ваш номер телефона для связи.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -295,6 +481,12 @@
                 closeMenu();
             }
         });
+
+        // Функция для открытия/закрытия FAQ
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            faqItem.classList.toggle('active');
+        }
 
         // Регистрация Service Worker для оффлайн функциональности
         if ('serviceWorker' in navigator) {
